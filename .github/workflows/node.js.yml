@@ -19,6 +19,15 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
+    
+    - name: Copy folder content recursively to remote
+      uses: garygrossgarten/github-action-scp@release
+      with:
+        local: .
+        remote: /var/www/backend
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
     - name: executing remote ssh commands using password
       uses: appleboy/ssh-action@master
       with:
@@ -26,12 +35,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: whoami
-    - name: Copy folder content recursively to remote
-      uses: garygrossgarten/github-action-scp@release
-      with:
-        local: .
-        remote: /etc/www/backend
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
+        script: cd /var/www/backend && rm node_modules && yarn install
