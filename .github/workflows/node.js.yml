@@ -35,4 +35,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cd /var/www/backend && rm node_modules && yarn install
+        script: cd /var/www/backend && bash run.sh
