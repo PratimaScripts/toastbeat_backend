@@ -33,7 +33,7 @@ module.exports = db.sequelize.define(
             field: "password"
         },
         cuisine: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             field: "cuisine"
         }
     },    
@@ -42,6 +42,8 @@ module.exports = db.sequelize.define(
         // disable the modification of tablenames; By default, sequelize will automatically
         // transform all passed model names (first parameter of define) into plural.
         // if you don't want that, set the following
-        freezeTableName: true
+        freezeTableName: true,
+        timestamp: false,
+        tableName: 'tbl_user'
     }
 )
