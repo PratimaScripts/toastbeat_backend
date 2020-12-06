@@ -1,7 +1,8 @@
 const Sequelize = require("sequelize")
 const db = {}
-const sequelize = new Sequelize("dbtoastbeat_demo", "root", "", {
-    host: 'localhost',
+const sequelize = new Sequelize("dbtoastbeat", "admin", "Pratima123", {
+    host: 'dbtoastbeatdemo.cs9vkzujxmdc.us-east-2.rds.amazonaws.com',
+    
     dialect: 'mysql',
     pool: {
         max: 5,
