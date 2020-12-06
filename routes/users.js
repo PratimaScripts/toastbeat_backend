@@ -13,7 +13,6 @@ users.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-
 // Login Users
 users.post("/login", (req, res) => {
   User.findOne({
@@ -75,11 +74,11 @@ users.post("/register", (req, res) => {
             })
             .catch((err) => {
               console.log("**error")
-              res.send(err);
+              res.status(403).json(err);
             });
         });
       } else {
-        res.json({ error: "User already exists" });
+        res.status(403).json({ error: "User already exists" });
       }
     })
     .catch((err) => {
